@@ -38,6 +38,7 @@ class ModeratorsListViewController: UIViewController, AlertDisplayer {
   
   var site: String!
   
+  //我的viewModel，controller會跟它溝通
   private var viewModel: ModeratorsViewModel!
   
   private var shouldShowLoadingCell = false
@@ -83,7 +84,8 @@ extension ModeratorsListViewController: UITableViewDataSource,UITableViewDelegat
     if isLoadingCell(for: indexPath) {
       cell.configure(with: .none)
     } else {
-      //cell就是我的view，然後透過configure方法跟我的viewModel邦定
+      //view與Controller均不能直接引用model,而是通過引用viewModel來間接引用model
+      //cell是我的view，然後透過configure方法跟viewModel邦定
       cell.configure(with: viewModel.moderator(at: indexPath.row))
     }
     return cell
