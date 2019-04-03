@@ -83,6 +83,7 @@ extension ModeratorsListViewController: UITableViewDataSource,UITableViewDelegat
     if isLoadingCell(for: indexPath) {
       cell.configure(with: .none)
     } else {
+      //cell就是我的view，然後透過configure方法跟我的viewModel邦定
       cell.configure(with: viewModel.moderator(at: indexPath.row))
     }
     return cell
