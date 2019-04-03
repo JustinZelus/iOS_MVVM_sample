@@ -32,7 +32,7 @@ protocol ModeratorsViewModelDelegate: class {
   func onFetchCompleted(with newIndexPathsToReload: [IndexPath]?)
   func onFetchFailed(with reason: String)
 }
-
+//呼叫api的邏輯通常寫在這裡
 final class ModeratorsViewModel {
   private weak var delegate: ModeratorsViewModelDelegate?
   
@@ -60,7 +60,7 @@ final class ModeratorsViewModel {
   func moderator(at index: Int) -> Moderator {
     return moderators[index]
   }
-  
+  //呼叫api的方法
   func fetchModerators() {
     // 1
     guard !isFetchInProgress else {
@@ -71,8 +71,9 @@ final class ModeratorsViewModel {
     isFetchInProgress = true
     
     client.fetchModerators(with: request, page: currentPage) { result in
+      //以下switch為我的商業邏輯                                                        
       switch result {
-      // 3
+      // 3 
       case .failure(let error):
         DispatchQueue.main.async {
           self.isFetchInProgress = false
