@@ -28,6 +28,7 @@
 
 import UIKit
 
+//我的View之一
 class ModeratorTableViewCell: UITableViewCell {
   @IBOutlet var displayNameLabel: UILabel!
   @IBOutlet var reputationLabel: UILabel!
@@ -49,6 +50,8 @@ class ModeratorTableViewCell: UITableViewCell {
     indicatorView.hidesWhenStopped = true
     indicatorView.color = ColorPalette.RWGreen
   }
+  
+
   //Moderator為此畫面要呈現的資料，也就是我的Model
   func configure(with moderator: Moderator?) {
     if let moderator = moderator {
